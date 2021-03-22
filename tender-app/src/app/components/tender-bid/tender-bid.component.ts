@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TenderBidSubmission } from 'src/app/models/tender-bid-submission';
 import { TenderBidProduct } from 'src/app/models/tender-bid-product';
+import { SharedService } from 'src/app/services/shared-services/shared.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-tender-bid',
@@ -14,11 +16,13 @@ export class TenderBidComponent implements OnInit {
   quotation: number;
   qtyPrice: number;
 
+  closeResult: string;
+
   tenderBidSubmission: TenderBidSubmission;
   tenderBidSubmissionProducts: TenderBidProduct[];
   tenderBidProduct: TenderBidProduct;
 
-  constructor() {
+  constructor( private modalService: NgbModal) {
     this.tenderBidSubmission = new TenderBidSubmission();
    }
 
@@ -46,10 +50,28 @@ export class TenderBidComponent implements OnInit {
   }
 
   submit(): void {
+
+
+
     console.log(this.companyRegistraionNumber);
     console.log(this.companyName);
     console.log(this.quotation);
     console.log(this.qtyPrice);
+
+  }
+
+
+  open(content) {
+
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+
+      this.closeResult = `Closed with: ${result}`;
+
+    }, (reason) => {
+
+      //this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+
+    });
 
   }
 
