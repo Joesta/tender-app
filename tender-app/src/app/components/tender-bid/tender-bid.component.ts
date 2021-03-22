@@ -16,13 +16,14 @@ export class TenderBidComponent implements OnInit {
 
   tenderBidSubmission: TenderBidSubmission;
   tenderBidSubmissionProducts: TenderBidProduct[];
+  tenderBidProduct: TenderBidProduct;
 
   constructor() {
     this.tenderBidSubmission = new TenderBidSubmission();
    }
 
   ngOnInit(): void {
-
+    this.tenderBidProduct = new TenderBidProduct();
   }
 
 
