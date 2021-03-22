@@ -22,8 +22,11 @@
               <th>Quantity</th>
               <th>Total</th>
               <th>
-                <a class="btn btn-sm btn-success text-white"
-                  (click)="AddOrEditProduct()"><i class="fa fa-plus"></i> Add Product</a>
+                <!-- <a class="btn btn-sm btn-success text-white"
+                  (click)="AddOrEditProduct()"><i class="fa fa-plus"></i> Add Product</a> -->
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Add Product
+                   </button>
               </th>
             </thead>
             <tbody>
@@ -69,7 +72,7 @@
         <form (ngSubmit)="submit()">
          Product: <input type="text" [(ngModel)]="tenderBidProduct.Description" name="description"><br>
 
-         Price: <input type="number" [(ngModel)]="tenderBidProduct.Price" name="price"><br>
+         Price: <input type="number" [(ngModel)]="tenderBidProduct.QuotedPrice" name="price"><br>
 
          Quantity <input type="number" [(ngModel)]="tenderBidProduct.Quantity" name="Quantity"><br>
 
