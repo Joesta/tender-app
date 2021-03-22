@@ -1,32 +1,57 @@
 <div class="col-sm-12">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">Tender Bid Pricing</h4>
-        <div class="panel-body">
-          
-          <form (ngSubmit)="submit()">
-            <div class="form-group">
-                
-              Company Name:  <input type="text" 
-              [(ngModel)]="companyName" 
-              name="companyName"><br>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">Tender Bid Pricing</h4>
+      <div class="panel-body">
 
-              Company registration number:  <input type="text" 
-              [(ngModel)]="companyRegistraionNumber" 
-              name="regNumber"><br>
+        <form (ngSubmit)="submit()">
+          <div class="form-group">
 
-              Tender Quotation R <input type="number" 
-              [(ngModel)]="quotation" 
-              name="quotation"><br>
+            Company Name: <input type="text" [(ngModel)]="companyName" name="companyName"><br>
 
-              Tender Quantity Price Total <input type="number" 
-              [(ngModel)]="qtyPrice" 
-              name="qtyPrice"> <br>
+            Company registration number: <input type="text" [(ngModel)]="companyRegistraionNumber" name="regNumber"><br>
 
-              <button type="submit" class="btn btn-primary" >Submit</button>
-            </div>
+            Tender Quotation R <input type="number" [(ngModel)]="quotation" name="quotation"><br>
+
+            Tender Quantity Price Total <input type="number" [(ngModel)]="qtyPrice" name="qtyPrice"> <br>
+
+            <table class="table table-borderless">
+              <thead class="thead-light">
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>
+                  <a class="btn btn-sm btn-success text-white"
+                    (click)="AddOrEditProduct()"><i class="fa fa-plus"></i> Add Product</a>
+                </th>
+              </thead>
+              <tbody>
+                <tr *ngIf="tenderBidSubmissionProducts.length==0" [class.text-danger]="!isValid && tenderBidSubmissionProducts.length==0">
+                  <td class="font-italic text-center" colspan="5">
+                    No product has been selected for this submission.
+                  </td>
+                </tr>
+
+                <tr *ngFor="let product of tenderBidSubmissionProducts;let i=index;">
+                  <td>{{product.Description}}</td>
+                  <td>{{product.QuotedPrice}}</td>
+                  <td>{{product.Quantity}}</td>
+                  <td>{{product.Total}}</td>
+                  <td>
+                    <a class="btn btn-sm btn-info text-white"
+                      (click)="AddOrEditProduct()"><i class="fa fa-pencil"></i></a>
+                    <!-- <a class="btn btn-sm btn-danger text-white ml-1" (click)="onDeleteOrderItem(item.OrderItemID,i)"><i
+                        class="fa fa-trash"></i></a> -->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
         </form>
-        </div>
       </div>
     </div>
   </div>
+</div>
