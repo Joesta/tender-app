@@ -1,0 +1,32 @@
+<div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">Tender Bid Pricing</h4>
+        <div class="panel-body">
+          
+          <form (ngSubmit)="submit()">
+            <div class="form-group">
+                
+              Company Name:  <input type="text" 
+              [(ngModel)]="companyName" 
+              name="companyName"><br>
+
+              Company registration number:  <input type="text" 
+              [(ngModel)]="companyRegistraionNumber" 
+              name="regNumber"><br>
+
+              Tender Quotation R <input type="number" 
+              [(ngModel)]="quotation" 
+              name="quotation"><br>
+
+              Tender Quantity Price Total <input type="number" 
+              [(ngModel)]="qtyPrice" 
+              name="qtyPrice"> <br>
+
+              <button type="submit" class="btn btn-primary" >Submit</button>
+            </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
