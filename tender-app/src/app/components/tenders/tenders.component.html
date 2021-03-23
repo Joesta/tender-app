@@ -1,0 +1,20 @@
+<p>Table is just a mapping of objects to table rows with <code>ngFor</code></p>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Bid No</th>
+    <th scope="col">State Organ</th>
+    <th scope="col">Closing Date</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let tender of tenders; index as i">
+    <th>{{tender.BidNo}}</th>
+    <td>{{tender.BidNo}}</td>
+    <td>{{tender.CloseDate}}</td>
+    <td>View</td>
+  </tr>
+  </tbody>
+</table>
