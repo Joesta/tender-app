@@ -34,7 +34,8 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]

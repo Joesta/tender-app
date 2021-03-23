@@ -19,10 +19,10 @@ export class TenderBidComponent implements OnInit {
   closeResult: string;
 
   tenderBidSubmission: TenderBidSubmission;
-  tenderBidSubmissionProducts: TenderBidProduct[];
+  tenderBidSubmissionProducts: TenderBidProduct[] = [];
   tenderBidProduct: TenderBidProduct;
 
-  constructor( private modalService: NgbModal) {
+  constructor( private modalService: NgbModal, private sharedService: SharedService) {
     this.tenderBidSubmission = new TenderBidSubmission();
    }
 
@@ -45,29 +45,25 @@ export class TenderBidComponent implements OnInit {
     return this.isValid;
   }
 
-  onDeleteOrderItem(tenderBidProduct,i){
+  onDeleteOrderItem(tenderBidProduct,i) {
 
   }
 
   submit(): void {
-
-
-
-    console.log(this.companyRegistraionNumber);
-    console.log(this.companyName);
-    console.log(this.quotation);
-    console.log(this.qtyPrice);
-
+    console.log(this.tenderBidSubmissionProducts);
+    this.sharedService.captureTender(this.tenderBidSubmission).subscribe(response => {
+      console.log('alskdjfklasdjflas');
+    });
   }
 
 
   open(content) {
 
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-
       this.closeResult = `Closed with: ${result}`;
-      console.log('ok and content is ', content)
+      this.tenderBidSubmissionProducts.push(this.tenderBidProduct);
 
+     
     }, (reason) => {
       console.log('Reason is ', reason)
 

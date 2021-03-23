@@ -40,7 +40,7 @@
 
     <div class="card-body">
       <div class="col-sm-3">
-        <form (ngSubmit)="submit()">
+        <form>
           <div class="form-group">
             <label for="companyName"><h5>Company Name</h5></label>
             <input type="text" class="form-control" [(ngModel)]="tenderBidSubmission.companyName" name="companyName"><br>
@@ -78,11 +78,11 @@
               <th><button type="submit" class="btn btn-primary"  (click)="open(mymodal)" >Add</button></th>
             </thead>
             <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+              <tr *ngFor="let product of tenderBidSubmissionProducts">
+                <td>{{ product?.Description}}</td>
+                <td>{{ product?.QuotedPrice}}</td>
+                <td>{{ product?.Quantity }}</td>
+                <td>{{ product?.Total }}</td>
               </tr>
             </tbody>
           </table>
@@ -91,7 +91,7 @@
     </div>
   </div>
 </div>
-
-
+<br>
+<button type="submit" class="btn btn-primary" (click)="submit()">Submit</button>
 
 
