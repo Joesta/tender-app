@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { EligibleSupplier } from 'src/app/models/eligible-supplier';
 import { Tender } from 'src/app/models/tender';
 import { SharedService } from 'src/app/services/shared-services/shared.service';
 
@@ -11,6 +12,7 @@ import { SharedService } from 'src/app/services/shared-services/shared.service';
 })
 export class TenderComponent implements OnInit {
   tender: Tender;
+  eligibleSuppliers: EligibleSupplier[];
 
   constructor(private sharedService: SharedService,
     private activatedRoute: ActivatedRoute) { 
@@ -21,6 +23,13 @@ export class TenderComponent implements OnInit {
       const tenderId = +params['id'];
       this.sharedService.getTender(tenderId).subscribe((tender: Tender) => {
         this.tender = tender;
+
+        if (this.tender.isClosed)
+        {
+           this.sharedService.getEligibleSuppliers(this.tender.tenderId).subscribe((suppliers: EligibleSupplier[]) => {
+             this.eligibleSuppliers = suppliers;
+           });
+        }
       });
     });
   }

@@ -5,6 +5,7 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Tender } from 'src/app/models/tender';
 import { environment } from 'src/environments/environment';
 import { StateOrgan } from 'src/app/models/state-organ';
+import { EligibleSupplier } from 'src/app/models/eligible-supplier';
 
 const apiCaller = environment.apiBaseUrl;
 
@@ -30,11 +31,15 @@ export class SharedService {
   }
   
   getTender(tenderId:number): Observable<Tender> {
-    return this.http.get<Tender>(apiCaller + `/tender/${tenderId}`);
+    return this.http.get<Tender>(apiCaller + `tenders/${tenderId}`);
   }
 
   getStateOrgan(stateOrganId: number): Observable<StateOrgan>{
-    return this.http.get<StateOrgan>(apiCaller + `/companies/stateOrgan'${stateOrganId}`)
+    return this.http.get<StateOrgan>(apiCaller + `/companies/stateOrgan${stateOrganId}`)
+  }
+
+  getEligibleSuppliers(tenderId: number): Observable<EligibleSupplier[]>{
+    return this.http.get<EligibleSupplier[]>(apiCaller + `/tenders/eligibleSuppliers${tenderId}`);
   }
 
 }

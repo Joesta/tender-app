@@ -1,20 +1,29 @@
-<p>Table is just a mapping of objects to table rows with <code>ngFor</code></p>
-
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th scope="col">Bid No</th>
-    <th scope="col">State Organ</th>
-    <th scope="col">Closing Date</th>
-    <th scope="col"></th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let tender of tenders; index as i">
-    <th>{{tender.BidNo}}</th>
-    <td>{{tender.BidNo}}</td>
-    <td>{{tender.CloseDate}}</td>
-    <td>View</td>
-  </tr>
-  </tbody>
-</table>
+<div class="card">
+  <div class="card-header">
+    <h4>Available Tenders</h4>
+  </div>
+  <div class="card-body">
+    <form>
+      <div class="form-group">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Bid No</th>
+              <th scope="col">State Organ</th>
+              <th scope="col">Closing Date</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let tender of tenders">
+              <th>{{tender.bidNo}}</th>
+              <td>{{tender.emailAddress}}</td>
+              <td>{{tender.closeDate}}</td>
+              <td><a [routerLink]="['/tenders', 'tender.tenderId']">View</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </form>
+  </div>
+</div>
