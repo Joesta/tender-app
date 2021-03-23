@@ -43,16 +43,16 @@
         <form (ngSubmit)="submit()">
           <div class="form-group">
             <label for="companyName"><h5>Company Name</h5></label>
-            <input type="text" class="form-control" [(ngModel)]="companyName" name="companyName"><br>
+            <input type="text" class="form-control" [(ngModel)]="tenderBidSubmission.companyName" name="companyName"><br>
   
             <label for="compnayRegistrationNumber"><h5>Company Registration Number</h5></label>
-            <input type="text" class="form-control" [(ngModel)]="compnayRegistrationNumber" name="compnayRegistrationNumber"><br>
+            <input type="text" class="form-control" [(ngModel)]="tenderBidSubmission.registrationNo" name="compnayRegistrationNumber"><br>
   
-            <label for="tenderQuotation"><h5>Company Registration Number</h5></label>
-            <input type="number" class="form-control" [(ngModel)]="tenderQuotation" name="tenderQuotation"><br>
+            <label for="tenderQuotation"><h5>Bid No:</h5></label>
+            <input type="number" class="form-control" [(ngModel)]="tenderBidSubmission.bidNo" name="tenderQuotation"><br>
             
-            <label for="tednerQuantityTotalPrice"><h5>Tender Qyantityh Total Price</h5></label>
-            <input type="number" class="form-control" [(ngModel)]="tednerQuantityTotalPrice" name="tednerQuantityTotalPrice">
+            <label for="tenderQuantityTotalPrice"><h5>Tender Quantity Total Price</h5></label>
+            <input type="number" class="form-control" [(ngModel)]="tenderBidSubmission.totalQuotation" name="tenderQuantityTotalPrice">
   
           </div>
         </form>

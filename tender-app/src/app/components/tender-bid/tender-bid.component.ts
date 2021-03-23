@@ -38,9 +38,9 @@ export class TenderBidComponent implements OnInit {
 
   validateForm() {
     this.isValid = true;
-    if (this.tenderBidSubmission.TenderBidSubmissionId == 0)
+    if (this.tenderBidSubmission.tenderBidSubmissionId == 0)
       this.isValid = false;
-    else if (this.tenderBidSubmission.TenderBidProducts.length == 0)
+    else if (this.tenderBidSubmission.tenderBidProducts.length == 0)
       this.isValid = false;
     return this.isValid;
   }
