@@ -1,34 +1,63 @@
 <div class="card">
-    <div class="card-header">
+  <div class="card-header">
+    <!-- <div *ngIf="!isNullOrUndefined(tender)">
       <h4>Tender Bid No: {{tender.bidNo}}</h4>
-    </div>
-    <div class="card-body">
-      <form>
-        <div class="form-group">
-          <div *ngIf="tender.isClosed == true">
-            <div class="form-group">
-                <label>Eligible Suppliers For This Tender Contract</label>
-                <table class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">Company Name</th>
-                        <th scope="col">Registration No</th>
-                        <th scope="col">Score</th>
-                        <th scope="col">Price Inflation Rate</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let supplier of eligibleSuppliers">
-                        <th>{{supplier.Company.name}}</th>
-                        <td>{{supplier.Company.registration}}</td>
-                        <td>{{supplier.score}}</td>
-                        <td>{{supplier.inflationRate}}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-            </div>
+    </div> -->
+  </div>
+  <div class="card-body">
+    <form>
+      <div class="form-group">
+        <div class="modal-body">
+          <div class="modal-body">
+            <form>
+              <label for="product">
+                <h4>Bid No:</h4>
+              </label>
+              <input type="text" readonly class="form-control" [(ngModel)]="tender.bidNo" name="product"><br>
+
+              <label for="price">
+                <h5>State Organ</h5>
+              </label>
+              <input type="text" readonly class="form-control" [(ngModel)]="tender.stateOrgan.name" name="name"><br>
+
+              <!-- <label for="quantity">
+                <h5>Contact Person Email</h5>
+              </label>
+              <input type="number" readonly class="form-control" [(ngModel)]="tender.emailAddress" name="emailAddress"><br>
+
+              <label for="total">
+                <h5>Closing Date</h5>
+              </label>
+              <input type="number" readonly class="form-control" [(ngModel)]="tender.closeDate" name="total"> -->
+            </form>
           </div>
         </div>
-      </form>
-    </div>
+
+
+        <div *ngIf="tender.isClosed == true">
+          <div class="form-group">
+            <h5>Eligible Suppliers For This Tender Contract</h5>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Company Name</th>
+                  <th scope="col">Registration No</th>
+                  <th scope="col">Score</th>
+                  <th scope="col">Price Inflation Rate</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let supplier of eligibleSuppliers">
+                  <th>{{supplier.company.name}}</th>
+                  <td>{{supplier.company.registration}}</td>
+                  <td>{{supplier.score}}</td>
+                  <td>{{supplier.inflationRate}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </form>
   </div>
+</div>

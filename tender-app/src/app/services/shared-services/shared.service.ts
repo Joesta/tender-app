@@ -31,6 +31,7 @@ export class SharedService {
   }
   
   getTender(tenderId:number): Observable<Tender> {
+    console.log(this.http.get<Tender>(apiCaller + `tenders/${tenderId}`));
     return this.http.get<Tender>(apiCaller + `tenders/${tenderId}`);
   }
 
@@ -39,7 +40,7 @@ export class SharedService {
   }
 
   getEligibleSuppliers(tenderId: number): Observable<EligibleSupplier[]>{
-    return this.http.get<EligibleSupplier[]>(apiCaller + `/tenders/eligibleSuppliers${tenderId}`);
+    return this.http.get<EligibleSupplier[]>(apiCaller + `tenders/getEligibleSuppliers/${tenderId}`);
   }
 
 }

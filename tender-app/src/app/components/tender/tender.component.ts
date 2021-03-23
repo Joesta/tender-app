@@ -23,7 +23,6 @@ export class TenderComponent implements OnInit {
       const tenderId = +params['id'];
       this.sharedService.getTender(tenderId).subscribe((tender: Tender) => {
         this.tender = tender;
-
         if (this.tender.isClosed)
         {
            this.sharedService.getEligibleSuppliers(this.tender.tenderId).subscribe((suppliers: EligibleSupplier[]) => {

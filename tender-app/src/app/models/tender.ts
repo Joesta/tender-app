@@ -1,4 +1,5 @@
 import { Company } from "./company";
+import { EligibleSupplier } from "./eligible-supplier";
 import { StateOrgan } from "./state-organ";
 
 
@@ -13,6 +14,6 @@ export class Tender {
     emailAddress: string;
     stateOrganId: number;
     stateOrgan: StateOrgan ;
-    eligibleSupplier: Company[];
+    eligibleSupplier: EligibleSupplier[];
 
 }
