@@ -1,68 +1,5 @@
 
-  <div class="card">
-    <div class="card-header">
-      <h4>Tender Bid Pricing</h4>
-    </div>
-
-    <div class="card-body">
-      <form (ngSubmit)="submit()">
-        <div class="form-group">
-          Company Name: <input type="text" [(ngModel)]="companyName" name="companyName"><br>
-
-          Company registration number: <input type="text" [(ngModel)]="companyRegistraionNumber" name="regNumber"><br>
-
-          Tender Quotation R <input type="number" [(ngModel)]="quotation" name="quotation"><br>
-
-          Tender Quantity Price Total <input type="number" [(ngModel)]="qtyPrice" name="qtyPrice"> <br><br>
-
-          <table class="table table-borderless">
-            <thead class="thead-light">
-              <th>Product</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Total</th>
-              <th>
-                <!-- <a class="btn btn-sm btn-success text-white"
-                  (click)="AddOrEditProduct()"><i class="fa fa-plus"></i> Add Product</a> -->
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    Add Product
-                   </button>
-              </th>
-            </thead>
-            <tbody>
-              <tr *ngIf="tenderBidSubmissionProducts.length==0" [class.text-danger]="!isValid && tenderBidSubmissionProducts.length==0">
-                <td class="font-italic text-center" colspan="5">
-                  No product has been selected for this submission.
-                </td>
-              </tr>
-
-              <tr *ngFor="let product of tenderBidSubmissionProducts;let i=index;">
-                <td>{{product.Description}}</td>
-                <td>{{product.QuotedPrice}}</td>
-                <td>{{product.Quantity}}</td>
-                <td>{{product.Total}}</td>
-                <td>
-                  <a class="btn btn-sm btn-info text-white"
-                    (click)="AddOrEditProduct()"><i class="fa fa-pencil"></i></a>
-                  <!-- <a class="btn btn-sm btn-danger text-white ml-1" (click)="onDeleteOrderItem(item.OrderItemID,i)"><i
-                      class="fa fa-trash"></i></a> -->
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-
-
-
-<button type="submit" class="btn btn-primary"  (click)="open(mymodal)" >Add</button>
 <ng-template #mymodal let-modal>
-
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Bid Product</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -73,16 +10,88 @@
   <div class="modal-body">
     <div class="modal-body">    
       <form (ngSubmit)="submit()">
-       Product: <input type="text" [(ngModel)]="tenderBidProduct.Description" name="description"><br>
-       Price: <input type="number" [(ngModel)]="tenderBidProduct.QuotedPrice" name="price"><br>
-       Quantity <input type="number" [(ngModel)]="tenderBidProduct.Quantity" name="Quantity"><br>
-       Total <input type="number" [(ngModel)]="tenderBidProduct.Total" name="total"> <br><br>
+        <label for="product"><h5>Product</h5></label>
+        <input type="text" class="form-control" [(ngModel)]="tenderBidProduct.Description" name="product"><br>
+
+        <label for="price"><h5>Price</h5></label>
+        <input type="text" class="form-control" [(ngModel)]="tenderBidProduct.QuotedPrice" name="price"><br>
+
+        <label for="quantity"><h5>Quantity</h5></label>
+        <input type="number" class="form-control" [(ngModel)]="tenderBidProduct.Quantity" name="quantity"><br>
+        
+        <label for="total"><h5>Total</h5></label>
+        <input type="number" class="form-control" [(ngModel)]="tenderBidProduct.Total" name="total">
       </form>
     </div>
   </div>
 
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Add</button>
   </div>
 </ng-template>
+
+<br>
+<div class="row">
+ <div class="col-sm-6 col-md-12">
+  <div class="card">
+    <div class="card-header">
+      <h4>Tender Bid Pricing</h4>
+    </div>
+
+    <div class="card-body">
+      <div class="col-sm-3">
+        <form (ngSubmit)="submit()">
+          <div class="form-group">
+            <label for="companyName"><h5>Company Name</h5></label>
+            <input type="text" class="form-control" [(ngModel)]="companyName" name="companyName"><br>
+  
+            <label for="compnayRegistrationNumber"><h5>Company Registration Number</h5></label>
+            <input type="text" class="form-control" [(ngModel)]="compnayRegistrationNumber" name="compnayRegistrationNumber"><br>
+  
+            <label for="tenderQuotation"><h5>Company Registration Number</h5></label>
+            <input type="number" class="form-control" [(ngModel)]="tenderQuotation" name="tenderQuotation"><br>
+            
+            <label for="tednerQuantityTotalPrice"><h5>Tender Qyantityh Total Price</h5></label>
+            <input type="number" class="form-control" [(ngModel)]="tednerQuantityTotalPrice" name="tednerQuantityTotalPrice">
+  
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+ </div>
+</div>
+<br>
+
+<div class="row">
+  <div class="col-sm-6 col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4>Tender Bid Submission</h4>
+        <div class="card-body">
+          <table class="table table-bordless">
+            <thead class="thead-light">
+              <th>Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th><button type="submit" class="btn btn-primary"  (click)="open(mymodal)" >Add</button></th>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
