@@ -6,6 +6,7 @@ import { Tender } from 'src/app/models/tender';
 import { environment } from 'src/environments/environment';
 import { StateOrgan } from 'src/app/models/state-organ';
 import { EligibleSupplier } from 'src/app/models/eligible-supplier';
+import { Product } from 'src/app/models/product';
 
 const apiCaller = environment.apiBaseUrl;
 
@@ -41,6 +42,10 @@ export class SharedService {
 
   getEligibleSuppliers(tenderId: number): Observable<EligibleSupplier[]>{
     return this.http.get<EligibleSupplier[]>(apiCaller + `tenders/getEligibleSuppliers/${tenderId}`);
+  }
+
+  getProducts(): Observable<Product[]>{
+    return this.http.get<Product[]>(apiCaller + '/tenders/products');
   }
 
 }

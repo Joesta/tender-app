@@ -3,6 +3,7 @@ import { TenderBidSubmission } from 'src/app/models/tender-bid-submission';
 import { TenderBidProduct } from 'src/app/models/tender-bid-product';
 import { SharedService } from 'src/app/services/shared-services/shared.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Product } from 'src/app/models/product';
 
 @Component({
   selector: 'app-tender-bid',
@@ -21,6 +22,7 @@ export class TenderBidComponent implements OnInit {
   tenderBidSubmission: TenderBidSubmission;
   tenderBidSubmissionProducts: TenderBidProduct[] = [];
   tenderBidProduct: TenderBidProduct;
+  products: Product[];
 
   constructor( private modalService: NgbModal, private sharedService: SharedService) {
     this.tenderBidSubmission = new TenderBidSubmission();
@@ -28,6 +30,10 @@ export class TenderBidComponent implements OnInit {
 
   ngOnInit(): void {
     this.tenderBidProduct = new TenderBidProduct();
+    this.sharedService.getProducts().subscribe((products: Product[]) => {
+      this.products = products;
+    });
+
   }
 
 

@@ -10,16 +10,23 @@
   <div class="modal-body">
     <div class="modal-body">    
       <form (ngSubmit)="submit()">
+        <!-- <div>
+          <label>Product</label>
+          <select name="productId" #productId="ngModel" [(ngModel)]="product.productId" class="form-control">
+            <option value="0">-Select-</option>
+            <option *ngFor="let product of products" value="{{product.productId}}">{{product.description}</option>
+          </select>
+        </div> -->
         <label for="product"><h5>Product</h5></label>
         <input type="text" class="form-control" [(ngModel)]="tenderBidProduct.Description" name="product"><br>
 
-        <label for="price"><h5>Price</h5></label>
+        <label for="price"><h5>Price (R)</h5></label>
         <input type="text" class="form-control" [(ngModel)]="tenderBidProduct.QuotedPrice" name="price"><br>
 
         <label for="quantity"><h5>Quantity</h5></label>
         <input type="number" class="form-control" [(ngModel)]="tenderBidProduct.Quantity" name="quantity"><br>
         
-        <label for="total"><h5>Total</h5></label>
+        <label for="total"><h5>Total (R)</h5></label>
         <input type="number" class="form-control" [(ngModel)]="tenderBidProduct.Total" name="total">
       </form>
     </div>
@@ -49,9 +56,9 @@
             <input type="text" class="form-control" [(ngModel)]="tenderBidSubmission.registrationNo" name="compnayRegistrationNumber"><br>
   
             <label for="tenderQuotation"><h5>Bid No:</h5></label>
-            <input type="number" class="form-control" [(ngModel)]="tenderBidSubmission.bidNo" name="tenderQuotation"><br>
+            <input type="text" class="form-control" [(ngModel)]="tenderBidSubmission.bidNo" name="tenderQuotation"><br>
             
-            <label for="tenderQuantityTotalPrice"><h5>Tender Quantity Total Price</h5></label>
+            <label for="tenderQuantityTotalPrice"><h5>Bid Total Quotation Amt (R)</h5></label>
             <input type="number" class="form-control" [(ngModel)]="tenderBidSubmission.totalQuotation" name="tenderQuantityTotalPrice">
   
           </div>
