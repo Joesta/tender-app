@@ -68,7 +68,7 @@ export class TenderBidComponent implements OnInit {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
       this.tenderBidSubmissionProducts.push(this.tenderBidProduct);
-
+      this.ngOnInit();
      
     }, (reason) => {
       console.log('Reason is ', reason)
